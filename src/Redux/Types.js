@@ -1,0 +1,6 @@
+// Auth types
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
+export const ACCOUNT_TYPE_USER = 'ACCOUNT_TYPE_USER';
+export const ACCOUNT_TYPE_RESTAURANT = 'ACCOUNT_TYPE_RESTAURANT';
+export const ACCOUNT_TYPE_LIVEMUSIC = 'ACCOUNT_TYPE_LIVEMUSIC';
