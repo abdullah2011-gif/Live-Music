@@ -22,8 +22,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: width(4),
-    marginTop: height(5),
+    marginTop: height(3.25),
     letterSpacing: width(0.1),
+  },
+  forgot: {
+    color: Colors.blue,
+    textAlign: 'right',
+    fontWeight: 'bold',
+    fontSize: width(4),
+    marginTop: height(2.5),
+    letterSpacing: width(0.1),
+    width: width(90),
   },
   fbCont: {
     shadowColor: Colors.blue,

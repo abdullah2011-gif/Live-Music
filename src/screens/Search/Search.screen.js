@@ -30,13 +30,7 @@ function Dashboard({navigation: {navigate}}) {
   return (
     <Container backgroundColor={Colors.white}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={() => goBack()}>
-          <Ionicons
-            name="arrow-back-outline"
-            color={Colors.darkGrayText}
-            size={width(7)}
-          />
-        </TouchableOpacity>
+        <View style={{width: width(7)}} />
         <Text style={styles.bold}>Search</Text>
         <View style={{width: width(7)}} />
       </View>

@@ -42,9 +42,10 @@ function Login({navigation: {navigate}}) {
         placeholder="Password"
         containerStyle={{marginTop: height(2)}}
       />
+      <Text style={styles.forgot}>Forgot Password?</Text>
       <Button
         title="Login"
-        containerStyle={{marginTop: height(5)}}
+        containerStyle={{marginTop: height(2.5)}}
         onPress={logingIn}
       />
       <Text style={styles.grayBold1}>- Or sign in with -</Text>

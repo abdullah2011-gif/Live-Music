@@ -18,8 +18,8 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Feather from 'react-native-vector-icons/Feather';
 import {logout} from '../../Redux/Actions/Auth';
 import data from './data';
-function Login({navigation: {navigate, goBack}}) {
-  var type = useSelector(state => state.Auth.user.type);
+function Login({navigation: {navigate, goBack}, route: {params}}) {
+  var {type} = params;
   var uri =
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMW0LKcpGP77VJsaCwyb2WcmkuWSo6wQKDcw&usqp=CAU';
   if (type !== 'user')

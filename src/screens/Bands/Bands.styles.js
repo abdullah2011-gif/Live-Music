@@ -62,8 +62,9 @@ const styles = StyleSheet.create({
   },
   boldWhite: {
     color: Colors.white,
-    fontSize: width(5),
+    fontSize: width(5.3),
     letterSpacing: width(0.1),
+    fontWeight: 'bold',
   },
   white: {
     color: Colors.white,

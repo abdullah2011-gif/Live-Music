@@ -18,7 +18,9 @@ import CreateEvent from '../screens/CreateEvent/CreateEvent.screen';
 import ForgotPassword from '../screens/ForgotPassword/ForgotPassword.screen';
 import Notifications from '../screens/Notifications/Notifications.screen';
 import EditProfile from '../screens/EditProfile/EditProfile.screen';
+import MyReviews from '../screens/MyReviews/MyReviews.Screen';
 import Calandar from '../screens/Calandar/Calandar.screen';
+import DummyScreen from '../screens/DummyScreen/DummyScreen.screen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './Tab.Style';
 const Tab = createBottomTabNavigator();
@@ -104,6 +106,8 @@ export default function MyTabBar({state, descriptors, navigation}) {
             <Stack.Screen name="Notifications" component={Notifications} />
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
             <Stack.Screen name="EditProfile" component={EditProfile} />
+            <Stack.Screen name="MyReviews" component={MyReviews} />
+            <Stack.Screen name="DummyScreen" component={DummyScreen} />
           </Stack.Navigator>
         )}
       </Tab.Screen>

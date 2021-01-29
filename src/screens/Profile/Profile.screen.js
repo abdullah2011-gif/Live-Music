@@ -31,7 +31,7 @@ function Login({navigation: {navigate}}) {
       </TouchableOpacity>
       <View style={[styles.dataCont, type == 'user' && {marginTop: height(5)}]}>
         <TouchableOpacity
-          onPress={() => navigate('MyProfile')}
+          onPress={() => navigate('DummyScreen')}
           style={styles.single}>
           <Ionicons
             name="person-circle-sharp"
@@ -40,7 +40,9 @@ function Login({navigation: {navigate}}) {
           />
           <Text style={styles.grayBold1}>My Profile</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.single}>
+        <TouchableOpacity
+          onPress={() => navigate('MyReviews')}
+          style={styles.single}>
           <Ionicons
             name="star-sharp"
             color={Colors.blackText}

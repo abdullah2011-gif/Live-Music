@@ -28,16 +28,19 @@ function Login({navigation: {navigate, goBack}}) {
       <TextInput
         icon="ios-lock-closed-outline"
         placeholder="Current Password"
+        secureTextEntry={true}
         containerStyle={{marginTop: height(7)}}
       />
       <TextInput
         icon="ios-lock-closed-outline"
         placeholder="New Password"
+        secureTextEntry={true}
         containerStyle={{marginTop: height(2)}}
       />
       <TextInput
         icon="ios-lock-closed-outline"
         placeholder="Confirm Password"
+        secureTextEntry={true}
         containerStyle={{marginTop: height(2)}}
       />
       <Button

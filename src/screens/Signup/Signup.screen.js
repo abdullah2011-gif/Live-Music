@@ -114,6 +114,7 @@ function Login({navigation: {navigate}}) {
         <TextInput
           icon="ios-lock-closed-outline"
           placeholder="Confirm Password"
+          secureTextEntry={true}
           containerStyle={{marginTop: height(1)}}
         />
         <Button
