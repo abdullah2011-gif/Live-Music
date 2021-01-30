@@ -4,9 +4,9 @@ import {width, height, totalSize} from 'react-native-dimension';
 
 const styles = StyleSheet.create({
   mainCont: {
-    marginTop: height(13),
-    maxHeight: height(72),
-    width: width(80),
+    marginBottom: height(3),
+    maxHeight: height(80),
+    width: width(100) < 450 ? width(80) : width(73),
     alignSelf: 'center',
   },
   mainCont1: {
@@ -111,13 +111,14 @@ const styles = StyleSheet.create({
   },
   calandar: {
     width: width(15),
-    height: height(7),
+    height: height(8),
     backgroundColor: Colors.blue,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'flex-end',
+    marginBottom: -height(1),
   },
 });
 

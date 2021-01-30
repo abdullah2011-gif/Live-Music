@@ -15,7 +15,7 @@ function Login({navigation: {navigate, goBack}}) {
   var dispatch = useDispatch();
   return (
     <Container backgroundColor={Colors.white}>
-      <KeyboardAwareScrollView>
+      <View style={{height: '100%', justifyContent: 'center'}}>
         <View style={styles.headerContainer}>
           <TouchableOpacity onPress={() => goBack()}>
             <Ionicons
@@ -27,48 +27,52 @@ function Login({navigation: {navigate, goBack}}) {
           <Text style={styles.bold}>Edit Profile</Text>
           <View style={{width: width(7)}} />
         </View>
-        <View style={styles.main}>
-          <Image source={{uri: uri}} style={styles.userImage} />
-          <TouchableOpacity activeOpacity={0.8} style={styles.time}>
-            <Ionicons
-              name="camera"
-              color={Colors.darkGrayText}
-              size={width(4)}
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={[styles.textCont, {marginTop: height(5)}]}>
-          <Text style={styles.label}>Name</Text>
-          <TextInput
-            placeholder="Name"
-            placeholderTextColor={Colors.darkGrayText}
-            style={styles.textInput}
-          />
-        </View>
-        <View style={styles.textCont}>
-          <Text style={styles.label}>Email</Text>
-          <TextInput
-            placeholder="Email"
-            placeholderTextColor={Colors.darkGrayText}
-            style={styles.textInput}
-          />
-        </View>
-        <View style={styles.textCont}>
-          <Text style={styles.label}>Phone no.</Text>
-          <TextInput
-            placeholder="Phone"
-            placeholderTextColor={Colors.darkGrayText}
-            style={styles.textInput}
-          />
-        </View>
-        <View style={[styles.textCont, {marginBottom: height(3)}]}>
-          <Text style={styles.label}>Location</Text>
-          <TextInput
-            placeholder="Location"
-            placeholderTextColor={Colors.darkGrayText}
-            style={styles.textInput}
-          />
-        </View>
+        <KeyboardAwareScrollView>
+          <View style={styles.main}>
+            <Image source={{uri: uri}} style={styles.userImage} />
+            <TouchableOpacity activeOpacity={0.8} style={styles.time}>
+              <Ionicons
+                name="camera"
+                color={Colors.darkGrayText}
+                size={width(4)}
+              />
+            </TouchableOpacity>
+          </View>
+          <View>
+            <View style={[styles.textCont, {marginTop: height(5)}]}>
+              <Text style={styles.label}>Name</Text>
+              <TextInput
+                placeholder="Name"
+                placeholderTextColor={Colors.darkGrayText}
+                style={styles.textInput}
+              />
+            </View>
+            <View style={styles.textCont}>
+              <Text style={styles.label}>Email</Text>
+              <TextInput
+                placeholder="Email"
+                placeholderTextColor={Colors.darkGrayText}
+                style={styles.textInput}
+              />
+            </View>
+            <View style={styles.textCont}>
+              <Text style={styles.label}>Phone no.</Text>
+              <TextInput
+                placeholder="Phone"
+                placeholderTextColor={Colors.darkGrayText}
+                style={styles.textInput}
+              />
+            </View>
+            <View style={[styles.textCont, {marginBottom: height(3)}]}>
+              <Text style={styles.label}>Location</Text>
+              <TextInput
+                placeholder="Location"
+                placeholderTextColor={Colors.darkGrayText}
+                style={styles.textInput}
+              />
+            </View>
+          </View>
+        </KeyboardAwareScrollView>
         <View style={styles.buttonCont}>
           <Button
             title={'Update'}
@@ -83,7 +87,7 @@ function Login({navigation: {navigate, goBack}}) {
             containerStyle={styles.button1}
           />
         </View>
-      </KeyboardAwareScrollView>
+      </View>
     </Container>
   );
 }

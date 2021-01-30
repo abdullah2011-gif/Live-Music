@@ -17,8 +17,8 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import boardslist from './data';
 import Colors from '../../utills/Colors';
-export default function About({navigation: {goBack}}) {
-  const [tab, setTab] = useState(0);
+export default function About({navigation: {goBack, navigate}}) {
+  const [tab, setTab] = useState(1);
   const _boardslist = ({item}) => {
     return (
       <>
@@ -63,7 +63,7 @@ export default function About({navigation: {goBack}}) {
         </TouchableOpacity>
         <View style={styles.sliderCont}>
           <TouchableOpacity
-            onPress={() => setTab(0)}
+            onPress={() => navigate('AllReviews')}
             style={[
               styles.slider,
               tab == 0 && {borderBottomColor: Colors.blue},

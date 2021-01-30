@@ -7,11 +7,11 @@ import TextInput from '../../components/TextInput/TextInput.component';
 import Colors from '../../utills/Colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {height, width} from 'react-native-dimension';
-function Dashboard({navigation: {navigate}}) {
+function Dashboard({navigation: {navigate, openDrawer}}) {
   return (
     <Container backgroundColor={Colors.white}>
       <View style={styles.header}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={openDrawer}>
           <Ionicons name="menu-outline" color={Colors.blue} size={width(8)} />
         </TouchableOpacity>
         <TextInput

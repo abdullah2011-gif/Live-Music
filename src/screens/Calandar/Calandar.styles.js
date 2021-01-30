@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   header: {
     position: 'absolute',
     width: width(100),
-    height: height(8),
+    height: height(6),
     backgroundColor: '#fff',
     zIndex: 1,
     paddingHorizontal: width(5),

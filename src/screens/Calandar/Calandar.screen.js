@@ -46,6 +46,7 @@ function Login({navigation: {navigate, goBack}}) {
         </View>
         <CalendarPicker
           ref={calandarRef}
+          restrictMonthNavigation={true}
           customDayHeaderStyles={prop => ({
             textStyle: {color: Colors.blue},
           })}

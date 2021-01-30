@@ -23,7 +23,7 @@ function Login({navigation: {navigate}}) {
       </TouchableOpacity>
       <TouchableOpacity
         activeOpacity={0.9}
-        onPress={() => navigate('MyProfile', {type: 'user'})}
+        onPress={() => navigate('EditProfile', {type: 'user'})}
         style={styles.labelCont}>
         <Text style={styles.label}>Customer</Text>
       </TouchableOpacity>

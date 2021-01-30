@@ -19,7 +19,9 @@ const uri =
 function Dashboard({navigation: {navigate}}) {
   const [type, setType] = useState(0);
   return (
-    <Container backgroundColor={Colors.white}>
+    <Container
+      style={{justifyContent: 'flex-end'}}
+      backgroundColor={Colors.white}>
       <Image style={styles.bgImage} source={{uri: uri}} />
       <View style={styles.mainCont}>
         <TouchableOpacity

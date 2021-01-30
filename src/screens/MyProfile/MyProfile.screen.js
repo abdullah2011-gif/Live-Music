@@ -27,7 +27,9 @@ function Login({navigation: {navigate, goBack}, route: {params}}) {
       'https://images.unsplash.com/photo-1547404415-5eb20ddab016?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60';
   var dispatch = useDispatch();
   return (
-    <Container backgroundColor={Colors.white}>
+    <Container
+      style={{justifyContent: 'space-around'}}
+      backgroundColor={Colors.white}>
       <View style={styles.headerContainer}>
         <TouchableOpacity onPress={() => goBack()}>
           <Ionicons
@@ -45,7 +47,7 @@ function Login({navigation: {navigate, goBack}, route: {params}}) {
           <Ionicons name="camera" color={Colors.darkGrayText} size={width(4)} />
         </TouchableOpacity>
       </View>
-      <View style={[styles.dataCont, type == 'user' && {marginTop: height(5)}]}>
+      <View style={[styles.dataCont, {marginBottom: height(2)}]}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <Text style={styles.heading}>Name</Text>
           <Text style={styles.normal}>Pebble Street NFC</Text>
@@ -59,7 +61,7 @@ function Login({navigation: {navigate, goBack}, route: {params}}) {
           <Text style={styles.heading}>Location</Text>
           <Text style={styles.gray}>New York, USA, 7671</Text>
           <View style={styles.line} />
-          {type != 'restaurant' ? (
+          {type != 'livemusic' ? (
             <>
               <Text style={styles.heading}>Opening Time</Text>
               <Text style={styles.gray}>10:00 AM</Text>

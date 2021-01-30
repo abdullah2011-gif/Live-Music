@@ -6,9 +6,16 @@ import Landing from '../screens/Landing/Landing.screen';
 import Tab from './Tab';
 import Signup from '../screens/Signup/Signup.screen';
 import Subscription from '../screens/Subscription/Subscription.screen';
+import AboutUs from '../screens/AboutUs/AboutUs.screen';
 import Splash from '../screens/Splash/Splash.screen';
-import {useSelector} from 'react-redux';
+import PrivacyPoliecy from '../screens/PrivacyPoliecy/PrivacyPoliecy.screen';
+import TermsCondition from '../screens/TermsCondition/TermsCondition.screen';
+import ContactUs from '../screens/ContactUs/ContactUs.screen';
+import {useDispatch, useSelector} from 'react-redux';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import CustomDrawer from './CustomDrawer';
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 function Routes() {
   var [splash, setSplash] = useState(true);
   var isLogin = useSelector(state => state.Auth.isLogin);
@@ -17,6 +24,7 @@ function Routes() {
       setSplash(false);
     }, 3000);
   }, []);
+  var dispatch = useDispatch();
   return (
     <NavigationContainer>
       {splash ? (
@@ -31,9 +39,23 @@ function Routes() {
           <Stack.Screen name="Signup" component={Signup} />
         </Stack.Navigator>
       ) : (
-        <Stack.Navigator initialRouteName="Search" headerMode="none">
-          <Stack.Screen name="Tab" component={Tab} />
-        </Stack.Navigator>
+        <Drawer.Navigator
+          drawerContent={props => CustomDrawer(props, dispatch)}
+          initialRouteName="Tab">
+          <Drawer.Screen
+            options={{
+              drawerLabel: () => null,
+              title: null,
+              drawerIcon: () => null,
+            }}
+            name="Tab"
+            component={Tab}
+          />
+          <Drawer.Screen name="AboutUs" component={AboutUs} />
+          <Drawer.Screen name="TermsCondition" component={TermsCondition} />
+          <Drawer.Screen name="PrivacyPoliecy" component={PrivacyPoliecy} />
+          <Drawer.Screen name="ContactUs" component={ContactUs} />
+        </Drawer.Navigator>
       )}
     </NavigationContainer>
   );

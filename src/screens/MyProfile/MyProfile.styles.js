@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: height(3),
     paddingBottom: height(2.5),
-    maxHeight: height(60),
+    maxHeight: height(62),
   },
   single: {
     flexDirection: 'row',

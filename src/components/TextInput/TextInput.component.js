@@ -14,23 +14,29 @@ const Component = ({
   onFocus,
   onBlur,
   secureTextEntry,
+  multiline,
+  inputStyle,
 }) => {
   return (
     <View style={[styles.container, containerStyle]}>
-      <Ionicons
-        name={icon}
-        color={Colors.grayText}
-        size={iconSize ? iconSize : width(7)}
-      />
+      {icon && (
+        <Ionicons
+          name={icon}
+          color={Colors.grayText}
+          size={iconSize ? iconSize : width(7)}
+        />
+      )}
       <TextInput
         value={value}
         onFocus={onFocus}
         secureTextEntry={secureTextEntry}
         onBlur={onBlur}
         placeholder={placeholder}
+        multiline={multiline}
         placeholderTextColor={Colors.grayText}
         onChangeText={onChangeText}
-        style={styles.text}
+        textAlignVertical={multiline && 'top'}
+        style={[styles.text, inputStyle]}
       />
     </View>
   );
