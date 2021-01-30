@@ -40,8 +40,8 @@ function Dashboard({navigation: {navigate, openDrawer}}) {
               activeOpacity={0.9}
               onPress={() => navigate('Bands')}
               style={styles.itemCont}>
-              <Text style={styles.itemName}>{item.name}</Text>
               <Image style={styles.itemImage} source={{uri: item.image}} />
+              <Text style={styles.itemName}>{item.name}</Text>
             </TouchableOpacity>
           );
         }}

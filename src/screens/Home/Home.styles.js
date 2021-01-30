@@ -20,10 +20,11 @@ const styles = StyleSheet.create({
     width: width(43.5),
     height: height(20),
     borderRadius: 10,
+    justifyContent: 'space-around',
   },
   itemImage: {
-    height: height(10),
-    width: width(20),
+    height: height(12),
+    width: width(23),
     marginTop: height(2),
     alignSelf: 'flex-end',
     marginRight: '20%',
@@ -36,8 +37,8 @@ const styles = StyleSheet.create({
     marginTop: height(1),
   },
   itemFlatListContainer: {
-    paddingBottom: height(4),
-    paddingTop: height(2),
+    // paddingBottom: height(4),
+    paddingVertical: height(2),
   },
   itemFlatListColumn: {
     justifyContent: 'space-between',
