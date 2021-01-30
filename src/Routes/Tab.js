@@ -63,6 +63,7 @@ export default function MyTabBar({state, descriptors, navigation}) {
       tabBarOptions={{
         activeTintColor: Colors.blue,
         inactiveTintColor: Colors.darkGrayText,
+        keyboardHidesTabBar: true,
         showLabel: false,
         style: {
           backgroundColor: Colors.white,
@@ -108,6 +109,7 @@ export default function MyTabBar({state, descriptors, navigation}) {
             <Stack.Screen name="EditProfile" component={EditProfile} />
             <Stack.Screen name="MyReviews" component={MyReviews} />
             <Stack.Screen name="DummyScreen" component={DummyScreen} />
+            <Stack.Screen name="AllReviews" component={AllReviews} />
           </Stack.Navigator>
         )}
       </Tab.Screen>
