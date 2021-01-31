@@ -38,7 +38,11 @@ function Dashboard({navigation: {navigate}}) {
         iconSize={width(5)}
         onFocus={() => setIsSearching(true)}
         onBlur={() => setIsSearching(false)}
-        containerStyle={{height: height(6), marginTop: height(3), width: '90%'}}
+        containerStyle={{
+          height: height(100) < 600 ? height(6) : height(7),
+          marginTop: height(3),
+          width: '90%',
+        }}
         icon="search-outline"
         placeholder="Restaurant"
       />

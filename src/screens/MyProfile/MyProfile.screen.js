@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import Button from '../../components/Button/Button.component';
 import Container from '../../components/Container/Container.component';
+import SelectModal from '../../components/SelectModal/SelectModal.component';
 import {useDispatch, useSelector} from 'react-redux';
 import {height, width} from 'react-native-dimension';
 import Colors from '../../utills/Colors';
@@ -19,13 +20,18 @@ import Feather from 'react-native-vector-icons/Feather';
 import {logout} from '../../Redux/Actions/Auth';
 import data from './data';
 function Login({navigation: {navigate, goBack}, route: {params}}) {
+  const [imageModal, setImageModal] = useState(false);
   var {type} = params;
-  var uri =
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMW0LKcpGP77VJsaCwyb2WcmkuWSo6wQKDcw&usqp=CAU';
-  if (type !== 'user')
-    uri =
-      'https://images.unsplash.com/photo-1547404415-5eb20ddab016?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60';
+  var [uri, setUri] = useState(
+    type !== 'user'
+      ? 'https://images.unsplash.com/photo-1547404415-5eb20ddab016?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
+      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMW0LKcpGP77VJsaCwyb2WcmkuWSo6wQKDcw&usqp=CAU',
+  );
   var dispatch = useDispatch();
+  const onUserImageCapture = image => {
+    setUri(image.path);
+    setImageModal(false);
+  };
   return (
     <Container
       style={{justifyContent: 'space-around'}}
@@ -43,7 +49,10 @@ function Login({navigation: {navigate, goBack}, route: {params}}) {
       </View>
       <View style={styles.main}>
         <Image source={{uri: uri}} style={styles.userImage} />
-        <TouchableOpacity activeOpacity={0.8} style={styles.time}>
+        <TouchableOpacity
+          onPress={() => setImageModal(true)}
+          activeOpacity={0.8}
+          style={styles.time}>
           <Ionicons name="camera" color={Colors.darkGrayText} size={width(4)} />
         </TouchableOpacity>
       </View>
@@ -146,6 +155,11 @@ function Login({navigation: {navigate, goBack}, route: {params}}) {
           )}
         </ScrollView>
       </View>
+      <SelectModal
+        onCapture={onUserImageCapture}
+        toggle={() => setImageModal(false)}
+        visible={imageModal}
+      />
     </Container>
   );
 }

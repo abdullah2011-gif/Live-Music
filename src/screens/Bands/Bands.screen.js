@@ -18,6 +18,8 @@ const uri =
   'https://images.unsplash.com/photo-1485872299829-c673f5194813?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8cGFydHl8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60';
 function Dashboard({navigation: {navigate}}) {
   const [type, setType] = useState(0);
+  const [isFav, setIsFav] = useState(false);
+  const toggleIsFav = () => setIsFav(fav => !fav);
   return (
     <Container
       style={{justifyContent: 'flex-end'}}
@@ -37,7 +39,12 @@ function Dashboard({navigation: {navigate}}) {
         <View style={styles.mainCont1}>
           <View style={styles.flexRow}>
             <Text style={styles.boldWhite}>Kash Band</Text>
-            <Ionicons name="heart" color={Colors.white} size={width(8)} />
+            <Ionicons
+              onPress={toggleIsFav}
+              name="heart"
+              color={isFav ? 'red' : Colors.white}
+              size={width(8)}
+            />
           </View>
           <ScrollView>
             {type == 0 && (
