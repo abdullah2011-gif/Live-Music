@@ -74,7 +74,6 @@ const drawerStyle = {
   activeTintColor: 'black',
   inactiveTintColor: 'black',
   labelStyle: {
-    fontFamily: 'montserrat',
     marginVertical: 16,
     marginHorizontal: 0,
   },
@@ -125,7 +124,6 @@ const styles = StyleSheet.create({
     color: Colors.blue,
   },
   logoutText: {
-    fontFamily: 'montserrat',
     color: '#b23b3b',
   },
   userImg: {

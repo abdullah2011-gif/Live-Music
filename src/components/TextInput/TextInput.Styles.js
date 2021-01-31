@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     width: '80%',
     alignSelf: 'center',
-    paddingVertical: height(0.1),
+    paddingVertical:height(100)<600? height(0.1):height(1),
     margin: totalSize(1),
     shadowColor: Colors.blue,
     shadowOffset: {width: 0, height: 2},

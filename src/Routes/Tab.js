@@ -67,8 +67,8 @@ export default function MyTabBar({state, descriptors, navigation}) {
         showLabel: false,
         style: {
           backgroundColor: Colors.white,
-          height: height(9),
-          // paddingBottom: height(1),
+         // height: height(9),
+           paddingTop:height(100)<600?0: height(2),
         },
       }}
       initialRouteName="Home">

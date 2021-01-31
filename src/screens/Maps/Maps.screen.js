@@ -18,7 +18,7 @@ import Carousel from 'react-native-snap-carousel';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 import {request, PERMISSIONS, RESULTS, check} from 'react-native-permissions';
 function Login({navigation: {navigate}}) {
-  const [isPermission, setIsPermission] = useState(false);
+  const [isPermission, setIsPermission] = useState(true);
   const [loading, setLoading] = useState(true);
   var dispatch = useDispatch();
   const checkingLocationServices = async () => {

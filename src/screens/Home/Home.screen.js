@@ -16,7 +16,7 @@ function Dashboard({navigation: {navigate, openDrawer}}) {
         </TouchableOpacity>
         <TextInput
           iconSize={width(5)}
-          containerStyle={{height: height(6)}}
+          containerStyle={{height:height(100)<600?height(6): height(5)}}
           icon="search-outline"
         />
         <TouchableOpacity>

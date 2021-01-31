@@ -3,7 +3,7 @@ import {Text, TextInput, View} from 'react-native';
 import styles from './TextInput.Styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Colors from '../../utills/Colors';
-import {width} from 'react-native-dimension';
+import {height, width} from 'react-native-dimension';
 const Component = ({
   containerStyle,
   value,
@@ -17,6 +17,7 @@ const Component = ({
   multiline,
   inputStyle,
 }) => {
+  console.log(height(100))
   return (
     <View style={[styles.container, containerStyle]}>
       {icon && (
