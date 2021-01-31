@@ -1,18 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, Image, TouchableOpacity, TextInput} from 'react-native';
 import Button from '../../components/Button/Button.component';
 import Container from '../../components/Container/Container.component';
 import {useDispatch} from 'react-redux';
 import {height, width} from 'react-native-dimension';
 import Colors from '../../utills/Colors';
+import SelectModal from '../../components/SelectModal/SelectModal.component';
 import styles from './EditProfile.styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
 import {logout} from '../../Redux/Actions/Auth';
-const uri =
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMW0LKcpGP77VJsaCwyb2WcmkuWSo6wQKDcw&usqp=CAU';
 function Login({navigation: {navigate, goBack}}) {
+  const [imageModal, setImageModal] = useState(false);
+
+  var [uri, setUri] = useState(
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMW0LKcpGP77VJsaCwyb2WcmkuWSo6wQKDcw&usqp=CAU',
+  );
   var dispatch = useDispatch();
+  const onUserImageCapture = image => {
+    setUri(image.path);
+    setImageModal(false);
+  };
   return (
     <Container backgroundColor={Colors.white}>
       <View style={{height: '100%', justifyContent: 'center'}}>
@@ -30,7 +38,10 @@ function Login({navigation: {navigate, goBack}}) {
         <KeyboardAwareScrollView>
           <View style={styles.main}>
             <Image source={{uri: uri}} style={styles.userImage} />
-            <TouchableOpacity activeOpacity={0.8} style={styles.time}>
+            <TouchableOpacity
+              onPress={() => setImageModal(true)}
+              activeOpacity={0.8}
+              style={styles.time}>
               <Ionicons
                 name="camera"
                 color={Colors.darkGrayText}
@@ -88,6 +99,11 @@ function Login({navigation: {navigate, goBack}}) {
           />
         </View>
       </View>
+      <SelectModal
+        onCapture={onUserImageCapture}
+        toggle={() => setImageModal(false)}
+        visible={imageModal}
+      />
     </Container>
   );
 }
