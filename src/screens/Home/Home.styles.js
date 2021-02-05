@@ -23,18 +23,16 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   itemImage: {
-    height: height(12),
-    width: width(23),
-    marginTop: height(2),
-    alignSelf: 'flex-end',
-    marginRight: '20%',
+    height: height(15),
+    width: '100%',
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
   },
   itemName: {
     color: Colors.darkGrayText,
     fontSize: width(5),
     letterSpacing: width(0.1),
     paddingHorizontal: width(3.5),
-    marginTop: height(1),
   },
   itemFlatListContainer: {
     // paddingBottom: height(4),
