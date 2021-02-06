@@ -19,14 +19,14 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     width: width(43.5),
     height: height(20),
-    borderRadius: 10,
     justifyContent: 'space-around',
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
   },
   itemImage: {
     height: height(15),
     width: '100%',
-    borderTopRightRadius: 10,
-    borderTopLeftRadius: 10,
+    borderRadius: 10,
   },
   itemName: {
     color: Colors.darkGrayText,
