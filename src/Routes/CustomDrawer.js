@@ -27,6 +27,14 @@ export default (props, dispatch) => {
           <TouchableOpacity
             style={styles.contactUsContainer}
             onPress={() => {
+              props.navigation.navigate('Tab');
+            }}>
+            <Ionicons name={'home'} size={30} color={Colors.blue} />
+            <Text style={styles.drawerText}>Home</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.contactUsContainer}
+            onPress={() => {
               props.navigation.navigate('AboutUs');
             }}>
             <Ionicons name={'business'} size={30} color={Colors.blue} />
@@ -35,7 +43,7 @@ export default (props, dispatch) => {
           <TouchableOpacity
             style={styles.contactUsContainer}
             onPress={() => {
-              props.navigation.navigate('TermsCondition');
+              props.navigation.navigate('PrivacyPoliecy');
             }}>
             <MaterialIcons name={'privacy-tip'} size={30} color={Colors.blue} />
             <Text style={styles.drawerText}>Privacy Poilcy</Text>
@@ -43,7 +51,7 @@ export default (props, dispatch) => {
           <TouchableOpacity
             style={styles.contactUsContainer}
             onPress={() => {
-              props.navigation.navigate('PrivacyPoliecy');
+              props.navigation.navigate('TermsCondition');
             }}>
             <MaterialIcons
               name={'local-police'}

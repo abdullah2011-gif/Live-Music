@@ -5,13 +5,13 @@ import Container from '../../components/Container/Container.component';
 import {height, width} from 'react-native-dimension';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Colors from '../../utills/Colors';
-function Login({navigation: {goBack}}) {
+function Login({navigation: {openDrawer}}) {
   return (
     <Container backgroundColor={Colors.white}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={() => goBack()}>
+        <TouchableOpacity onPress={openDrawer}>
           <Ionicons
-            name="arrow-back-outline"
+            name="menu-outline"
             color={Colors.darkGrayText}
             size={width(7)}
           />

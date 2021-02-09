@@ -9,14 +9,13 @@ import {height, width} from 'react-native-dimension';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Colors from '../../utills/Colors';
 import TextInput from '../../components/TextInput/TextInput.component';
-function Login({navigation: {goBack}}) {
-  var dispatch = useDispatch();
+function Login({navigation: {openDrawer, goBack}}) {
   return (
     <Container backgroundColor={Colors.white}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={() => goBack()}>
+        <TouchableOpacity onPress={openDrawer}>
           <Ionicons
-            name="arrow-back-outline"
+            name="menu-outline"
             color={Colors.darkGrayText}
             size={width(7)}
           />

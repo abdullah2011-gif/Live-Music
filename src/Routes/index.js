@@ -14,6 +14,7 @@ import ContactUs from '../screens/ContactUs/ContactUs.screen';
 import {useDispatch, useSelector} from 'react-redux';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import CustomDrawer from './CustomDrawer';
+import {SafeAreaView} from 'react-native';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 function Routes() {
@@ -26,38 +27,40 @@ function Routes() {
   }, []);
   var dispatch = useDispatch();
   return (
-    <NavigationContainer>
-      {splash ? (
-        <Stack.Navigator initialRouteName="Search" headerMode="none">
-          <Stack.Screen name="Splash" component={Splash} />
-        </Stack.Navigator>
-      ) : !isLogin ? (
-        <Stack.Navigator initialRouteName="Landing" headerMode="none">
-          <Stack.Screen name="Landing" component={Landing} />
-          <Stack.Screen name="Subscription" component={Subscription} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Signup" component={Signup} />
-        </Stack.Navigator>
-      ) : (
-        <Drawer.Navigator
-          drawerContent={props => CustomDrawer(props, dispatch)}
-          initialRouteName="Tab">
-          <Drawer.Screen
-            options={{
-              drawerLabel: () => null,
-              title: null,
-              drawerIcon: () => null,
-            }}
-            name="Tab"
-            component={Tab}
-          />
-          <Drawer.Screen name="AboutUs" component={AboutUs} />
-          <Drawer.Screen name="TermsCondition" component={TermsCondition} />
-          <Drawer.Screen name="PrivacyPoliecy" component={PrivacyPoliecy} />
-          <Drawer.Screen name="ContactUs" component={ContactUs} />
-        </Drawer.Navigator>
-      )}
-    </NavigationContainer>
+    <SafeAreaView>
+      <NavigationContainer>
+        {splash ? (
+          <Stack.Navigator initialRouteName="Search" headerMode="none">
+            <Stack.Screen name="Splash" component={Splash} />
+          </Stack.Navigator>
+        ) : !isLogin ? (
+          <Stack.Navigator initialRouteName="Landing" headerMode="none">
+            <Stack.Screen name="Landing" component={Landing} />
+            <Stack.Screen name="Subscription" component={Subscription} />
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Signup" component={Signup} />
+          </Stack.Navigator>
+        ) : (
+          <Drawer.Navigator
+            drawerContent={props => CustomDrawer(props, dispatch)}
+            initialRouteName="Tab">
+            <Drawer.Screen
+              options={{
+                drawerLabel: () => null,
+                title: null,
+                drawerIcon: () => null,
+              }}
+              name="Tab"
+              component={Tab}
+            />
+            <Drawer.Screen name="AboutUs" component={AboutUs} />
+            <Drawer.Screen name="TermsCondition" component={TermsCondition} />
+            <Drawer.Screen name="PrivacyPoliecy" component={PrivacyPoliecy} />
+            <Drawer.Screen name="ContactUs" component={ContactUs} />
+          </Drawer.Navigator>
+        )}
+      </NavigationContainer>
+    </SafeAreaView>
   );
 }
 export default Routes;
