@@ -33,7 +33,7 @@ function Dashboard({navigation: {navigate, goBack}}) {
   const [mode, setMode] = useState('date');
   const [modeType, setModeType] = useState('date');
   const [show, setShow] = useState(false);
-const [iosDate,setIosDate] = useState(new Date())
+  const [iosDate, setIosDate] = useState(new Date());
   const onChange = (event, selectedDate) => {
     if (event.type == 'set') {
       setShow(false);
@@ -44,9 +44,8 @@ const [iosDate,setIosDate] = useState(new Date())
         settingState(moment(currentDate).format('hh:mm A'), 'startingTime');
       if (modeType == 'endingTime')
         settingState(moment(currentDate).format('hh:mm A'), 'endingTime');
-    }else{
-      if(Platform.OS == 'ios')
-    setIosDate(selectedDate)
+    } else {
+      if (Platform.OS == 'ios') setIosDate(selectedDate);
     }
   };
 
@@ -115,9 +114,14 @@ const [iosDate,setIosDate] = useState(new Date())
       </View>
       <TextInput
         iconSize={width(5)}
-        containerStyle={{height: height(6), marginTop: height(3), width: '90%'}}
+        containerStyle={{
+          marginTop: height(3),
+          width: '90%',
+          paddingVertical: height(0.3),
+        }}
         icon="search-outline"
         value={search}
+        onChangeText={setSearch}
         placeholder="Search Event"
       />
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -214,17 +218,22 @@ const [iosDate,setIosDate] = useState(new Date())
             }}>
             {Platform.OS == 'ios' && (
               <View style={styles.iosDate}>
-                <TouchableOpacity onPress={() => {setIosDate(new Date());setShow(false)}}>
+                <TouchableOpacity
+                  onPress={() => {
+                    setIosDate(new Date());
+                    setShow(false);
+                  }}>
                   <Text style={styles.date}>cancel</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={()=>onChange({type:'set'},iosDate)}>
+                <TouchableOpacity
+                  onPress={() => onChange({type: 'set'}, iosDate)}>
                   <Text style={styles.date}>set</Text>
                 </TouchableOpacity>
               </View>
             )}
             <DateTimePicker
               isVisible={show}
-              value={Platform.OS=='ios'? iosDate:new Date()}
+              value={Platform.OS == 'ios' ? iosDate : new Date()}
               mode={mode}
               is24Hour={false}
               display="spinner"
