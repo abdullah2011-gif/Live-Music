@@ -6,6 +6,7 @@ import {
   FlatList,
   Image,
   ScrollView,
+  Platform,
 } from 'react-native';
 import styles from './CreateEvent.styles';
 import data from './data';
@@ -18,7 +19,6 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import {height, width} from 'react-native-dimension';
 import Modal from 'react-native-modal';
 import moment from 'moment';
-import RNDateTimePicker from '@react-native-community/datetimepicker';
 const defaultState = {
   date: '',
   startingTime: '',
@@ -33,17 +33,21 @@ function Dashboard({navigation: {navigate, goBack}}) {
   const [mode, setMode] = useState('date');
   const [modeType, setModeType] = useState('date');
   const [show, setShow] = useState(false);
-
+const [iosDate,setIosDate] = useState(new Date())
   const onChange = (event, selectedDate) => {
-    if(event.type == 'set')
-   { setShow(false);
-    const currentDate = selectedDate || new Date();
-    if (modeType == 'date')
-      settingState(moment(currentDate).format('DD-MM-YYYY'), 'date');
-    if (modeType == 'startingTime')
-      settingState(moment(currentDate).format('hh:mm A'), 'startingTime');
-    if (modeType == 'endingTime')
-      settingState(moment(currentDate).format('hh:mm A'), 'endingTime');}
+    if (event.type == 'set') {
+      setShow(false);
+      const currentDate = selectedDate || new Date();
+      if (modeType == 'date')
+        settingState(moment(currentDate).format('DD-MM-YYYY'), 'date');
+      if (modeType == 'startingTime')
+        settingState(moment(currentDate).format('hh:mm A'), 'startingTime');
+      if (modeType == 'endingTime')
+        settingState(moment(currentDate).format('hh:mm A'), 'endingTime');
+    }else{
+      if(Platform.OS == 'ios')
+    setIosDate(selectedDate)
+    }
   };
 
   const settingState = (value, key) => {
@@ -70,7 +74,7 @@ function Dashboard({navigation: {navigate, goBack}}) {
   const hideModal = () => {
     setModalVis(false);
     setSelectedItem(-1);
-    setShow(false)
+    setShow(false);
     setState(defaultState);
   };
   const renderItem = ({item, index}) => {
@@ -132,7 +136,7 @@ function Dashboard({navigation: {navigate, goBack}}) {
           renderItem={renderItem}
         />
       </ScrollView>
-      <Modal isVisible={modalVis} backdropColor={'white'} backdropOpacity={1} onBackdropPress={hideModal}>
+      <Modal isVisible={modalVis} onBackdropPress={hideModal}>
         <View style={styles.followingModal}>
           <TouchableOpacity onPress={hideModal} style={styles.closeCont}>
             <Ionicons name="close" color={Colors.white} size={width(4)} />
@@ -198,22 +202,38 @@ function Dashboard({navigation: {navigate, goBack}}) {
             textStyle={styles.label}
             containerStyle={styles.button}
           />
-           
         </View>
         {show && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={new Date()}
-          style={{position:'relative',bottom:0}}
-          mode={mode}
-          is24Hour={false}
-          display="spinner"
-          
-          onChange={onChange}
-        />
-      )}
+          <View
+            style={{
+              backgroundColor: Colors.white,
+              left: 0,
+              position: 'absolute',
+              bottom: 0,
+              right: 0,
+            }}>
+            {Platform.OS == 'ios' && (
+              <View style={styles.iosDate}>
+                <TouchableOpacity onPress={() => {setIosDate(new Date());setShow(false)}}>
+                  <Text style={styles.date}>cancel</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={()=>onChange({type:'set'},iosDate)}>
+                  <Text style={styles.date}>set</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+            <DateTimePicker
+              isVisible={show}
+              value={Platform.OS=='ios'? iosDate:new Date()}
+              mode={mode}
+              is24Hour={false}
+              display="spinner"
+              accessibilityViewIsModal={false}
+              onChange={onChange}
+            />
+          </View>
+        )}
       </Modal>
-      <RNDateTimePicker value={new Date()} />
     </Container>
   );
 }

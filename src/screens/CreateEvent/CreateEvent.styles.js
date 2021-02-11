@@ -9,6 +9,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: width(5),
     flexDirection: 'row',
   },
+  iosDate:{
+width:'90%',
+alignSelf:'center',
+flexDirection:'row',
+justifyContent:'space-between',
+alignItems:'center',
+paddingVertical:height(1.5)
+  },date:{color:Colors.blue,fontSize:width(4.3)},
   bold: {
     fontSize: width(5),
     color: Colors.blackText,

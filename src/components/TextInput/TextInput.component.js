@@ -17,7 +17,6 @@ const Component = ({
   multiline,
   inputStyle,
 }) => {
-  console.log(height(100))
   return (
     <View style={[styles.container, containerStyle]}>
       {icon && (
