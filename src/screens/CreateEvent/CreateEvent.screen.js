@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -18,6 +18,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import {height, width} from 'react-native-dimension';
 import Modal from 'react-native-modal';
 import moment from 'moment';
+import RNDateTimePicker from '@react-native-community/datetimepicker';
 const defaultState = {
   date: '',
   startingTime: '',
@@ -34,14 +35,15 @@ function Dashboard({navigation: {navigate, goBack}}) {
   const [show, setShow] = useState(false);
 
   const onChange = (event, selectedDate) => {
-    setShow(false);
+    if(event.type == 'set')
+   { setShow(false);
     const currentDate = selectedDate || new Date();
     if (modeType == 'date')
       settingState(moment(currentDate).format('DD-MM-YYYY'), 'date');
     if (modeType == 'startingTime')
       settingState(moment(currentDate).format('hh:mm A'), 'startingTime');
     if (modeType == 'endingTime')
-      settingState(moment(currentDate).format('hh:mm A'), 'endingTime');
+      settingState(moment(currentDate).format('hh:mm A'), 'endingTime');}
   };
 
   const settingState = (value, key) => {
@@ -68,6 +70,7 @@ function Dashboard({navigation: {navigate, goBack}}) {
   const hideModal = () => {
     setModalVis(false);
     setSelectedItem(-1);
+    setShow(false)
     setState(defaultState);
   };
   const renderItem = ({item, index}) => {
@@ -129,7 +132,7 @@ function Dashboard({navigation: {navigate, goBack}}) {
           renderItem={renderItem}
         />
       </ScrollView>
-      <Modal isVisible={modalVis} onBackdropPress={hideModal}>
+      <Modal isVisible={modalVis} backdropColor={'white'} backdropOpacity={1} onBackdropPress={hideModal}>
         <View style={styles.followingModal}>
           <TouchableOpacity onPress={hideModal} style={styles.closeCont}>
             <Ionicons name="close" color={Colors.white} size={width(4)} />
@@ -195,18 +198,22 @@ function Dashboard({navigation: {navigate, goBack}}) {
             textStyle={styles.label}
             containerStyle={styles.button}
           />
+           
         </View>
-      </Modal>
-      {show && (
+        {show && (
         <DateTimePicker
           testID="dateTimePicker"
           value={new Date()}
+          style={{position:'relative',bottom:0}}
           mode={mode}
           is24Hour={false}
           display="spinner"
+          
           onChange={onChange}
         />
       )}
+      </Modal>
+      <RNDateTimePicker value={new Date()} />
     </Container>
   );
 }

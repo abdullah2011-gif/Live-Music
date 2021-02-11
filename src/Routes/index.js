@@ -27,7 +27,7 @@ function Routes() {
   }, []);
   var dispatch = useDispatch();
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex:1}}>
       <NavigationContainer>
         {splash ? (
           <Stack.Navigator initialRouteName="Search" headerMode="none">
