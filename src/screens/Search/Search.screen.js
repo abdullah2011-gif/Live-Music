@@ -46,9 +46,10 @@ function Dashboard({navigation: {navigate}}) {
         icon="search-outline"
         placeholder="Restaurant"
       />
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {isSearching && (
-          <View style={styles.flexRow}>
+      {isSearching && (
+        <View style={{maxHeight:height(26)}}>
+          <ScrollView  nestedScrollEnabled={true}>
+          <View style={styles.flexRow1}>
             <View style={styles.country}>
               <Text style={styles.white}>Live Music</Text>
             </View>
@@ -59,7 +60,10 @@ function Dashboard({navigation: {navigate}}) {
               <Text style={styles.white}>Genre</Text>
             </View>
           </View>
+          </ScrollView></View>
         )}
+      <ScrollView showsVerticalScrollIndicator={false}>
+        
         <View style={styles.flexRow}>
           <Text style={styles.grayText}>
             Search the result for "restaurant"
