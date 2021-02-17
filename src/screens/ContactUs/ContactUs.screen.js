@@ -9,7 +9,7 @@ import {height, width} from 'react-native-dimension';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Colors from '../../utills/Colors';
 import TextInput from '../../components/TextInput/TextInput.component';
-function Login({navigation: {openDrawer, goBack}}) {
+function Login({navigation: {openDrawer, goBack,navigate}}) {
   return (
     <Container backgroundColor={Colors.white}>
       <View style={styles.headerContainer}>
@@ -45,7 +45,7 @@ function Login({navigation: {openDrawer, goBack}}) {
         <Button
           title="Send"
           containerStyle={{marginTop: height(5)}}
-          onPress={goBack}
+          onPress={()=>navigate('Tab')}
         />
       </ScrollView>
     </Container>

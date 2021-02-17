@@ -14,22 +14,30 @@ import ContactUs from '../screens/ContactUs/ContactUs.screen';
 import {useDispatch, useSelector} from 'react-redux';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import CustomDrawer from './CustomDrawer';
-import {SafeAreaView} from 'react-native';
+import {ActivityIndicator, SafeAreaView, View} from 'react-native';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 function Routes() {
   var [splash, setSplash] = useState(true);
   var isLogin = useSelector(state => state.Auth.isLogin);
+  var [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     setTimeout(() => {
       setSplash(false);
     }, 3000);
   }, []);
+  useEffect(() => {
+    setIsLoading(true)
+    setTimeout(() => {
+     setIsLoading(false)
+    }, 1500);
+  }, [isLogin]);
   var dispatch = useDispatch();
   return (
     <SafeAreaView style={{flex:1}}>
       <NavigationContainer>
-        {splash ? (
+        {isLoading?<View style={{flex:1,justifyContent:'center',alignItems:'center'}}><ActivityIndicator/></View>: splash ? (
           <Stack.Navigator initialRouteName="Search" headerMode="none">
             <Stack.Screen name="Splash" component={Splash} />
           </Stack.Navigator>

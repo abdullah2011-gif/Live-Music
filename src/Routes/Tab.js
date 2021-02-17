@@ -1,6 +1,7 @@
 import React from 'react';
-import {Platform, Text} from 'react-native';
+import {Platform, Text, TouchableOpacity} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {StackActions} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import Review from '../screens/Review/Review.Screen';
@@ -26,10 +27,16 @@ import styles from './Tab.Style';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 export default function MyTabBar({state, descriptors, navigation}) {
+  // const onPressTabBar=(props)=>{
+  //   console.log(navigation.dangerouslyGetState())
+  //   // navigation.reset({index:0})
+  // }
   return (
     <Tab.Navigator
       style={styles.tabBar}
+      // tabBar={ props => <TouchableOpacity {...props} />}
       screenOptions={({route}) => ({
+      
         tabBarIcon: ({focused, color, size}) => {
           let {name} = route;
           return (
@@ -59,6 +66,7 @@ export default function MyTabBar({state, descriptors, navigation}) {
             </>
           );
         },
+        // tabBarButton:prop=><TouchableOpacity {...prop} onPress={()=>onPressTabBar(prop)}/>,
       })}
       tabBarOptions={{
         activeTintColor: Colors.blue,
@@ -73,7 +81,13 @@ export default function MyTabBar({state, descriptors, navigation}) {
         },
       }}
       initialRouteName="Home">
-      <Tab.Screen name="Home">
+      <Tab.Screen name="Home" listeners={({ navigation, route }) => ({
+    blur: () => {
+      if (route.state && route.state.index > 0) {
+        navigation.dispatch(StackActions.popToTop());
+      }
+    },
+  })}>
         {() => (
           <Stack.Navigator initialRouteName="Home" headerMode="none">
             <Stack.Screen name="Home" component={Home} />
@@ -84,21 +98,39 @@ export default function MyTabBar({state, descriptors, navigation}) {
           </Stack.Navigator>
         )}
       </Tab.Screen>
-      <Tab.Screen name="Maps">
+      <Tab.Screen name="Maps"  listeners={({ navigation, route }) => ({
+    blur: () => {
+      if (route.state && route.state.index > 0) {
+        navigation.dispatch(StackActions.popToTop());
+      }
+    },
+  })}>
         {() => (
           <Stack.Navigator initialRouteName="Maps" headerMode="none">
             <Stack.Screen name="Maps" component={Maps} />
           </Stack.Navigator>
         )}
       </Tab.Screen>
-      <Tab.Screen name="Search">
+      <Tab.Screen name="Search"  listeners={({ navigation, route }) => ({
+    blur: () => {
+      if (route.state && route.state.index > 0) {
+        navigation.dispatch(StackActions.popToTop());
+      }
+    },
+  })}>
         {() => (
           <Stack.Navigator initialRouteName="Search" headerMode="none">
             <Stack.Screen name="Search" component={Search} />
           </Stack.Navigator>
         )}
       </Tab.Screen>
-      <Tab.Screen name="Profile">
+      <Tab.Screen name="Profile"  listeners={({ navigation, route }) => ({
+    blur: () => {
+      if (route.state && route.state.index > 0) {
+        navigation.dispatch(StackActions.popToTop());
+      }
+    },
+  })}>
         {() => (
           <Stack.Navigator initialRouteName="Profile" headerMode="none">
             <Stack.Screen name="Profile" component={Profile} />

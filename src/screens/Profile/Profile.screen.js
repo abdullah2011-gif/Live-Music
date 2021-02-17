@@ -23,6 +23,13 @@ function Login({navigation: {navigate}}) {
     setUri(image.path);
     setImageModal(false);
   };
+ const delay =()=>{
+  setTimeout(function(){
+ 
+    dispatch(logout())
+
+  }, 1000);
+ }
   return (
     <Container backgroundColor={Colors.white}>
       <Text style={styles.bold}>My Account</Text>
@@ -114,7 +121,7 @@ function Login({navigation: {navigate}}) {
           <Text style={styles.grayBold1}>Change Password</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => dispatch(logout())}
+          onPress={() => delay()}
           style={styles.single}>
           <Ionicons
             name="md-log-out"

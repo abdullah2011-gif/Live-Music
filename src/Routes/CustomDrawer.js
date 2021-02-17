@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, Image, Linking} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {DrawerContentScrollView} from '@react-navigation/drawer';
-
+import { StackActions } from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {height, width} from 'react-native-dimension';
 import Colors from '../utills/Colors';
@@ -27,7 +27,7 @@ export default (props, dispatch) => {
           <TouchableOpacity
             style={styles.contactUsContainer}
             onPress={() => {
-              props.navigation.navigate('Tab');
+              props.navigation.navigate('Home');
             }}>
             <Ionicons name={'home'} size={30} color={Colors.blue} />
             <Text style={styles.drawerText}>Home</Text>
