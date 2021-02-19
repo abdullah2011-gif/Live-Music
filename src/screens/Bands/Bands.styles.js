@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   },
   detText: {
     color: 'rgba(255,255,255,0.7)',
-    fontSize: width(4.3),
+    fontSize:width(100)<300?width(3): width(3.5),
     letterSpacing: width(0.1),
   },
   country: {

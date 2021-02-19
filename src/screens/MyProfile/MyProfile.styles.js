@@ -133,6 +133,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     paddingHorizontal: width(2),
     alignItems: 'center',
+    justifyContent:'center',
     shadowColor: Colors.blue,
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 1,
@@ -141,8 +142,9 @@ const styles = StyleSheet.create({
   },
   white: {
     color: Colors.white,
-    fontSize: width(3),
+    fontSize:width(100)<330?width(2.2): width(2.7),
     letterSpacing: width(0.1),
+    
   },
 });
 export default styles;

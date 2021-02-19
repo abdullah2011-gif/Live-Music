@@ -100,6 +100,7 @@ function Login({navigation: {navigate, goBack}, route: {params}}) {
                         item.blue && {backgroundColor: Colors.blue},
                       ]}>
                       <Text
+                      numberOfLines={1}
                         style={[
                           styles.white,
                           !item.blue && {color: Colors.blackText},
